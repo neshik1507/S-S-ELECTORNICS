@@ -1,0 +1,2917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Neshik S S — Creative Developer, BCA Student, Web Developer and UI/UX Designer.">
+
+<title>NESHIK® — Digital Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#101010;
+    --black2:#171717;
+    --cream:#f1ede4;
+    --cream2:#e7e1d5;
+    --white:#fff;
+    --gray:#85817a;
+    --gray2:#aaa59c;
+    --line-dark:rgba(241,237,228,.15);
+    --line-light:rgba(16,16,16,.15);
+    --lime:#d9ff50;
+    --red:#ff4d3d;
+
+    --ease:cubic-bezier(.16,.75,.18,1);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    background:none;
+    color:inherit;
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+::selection{
+    background:var(--lime);
+    color:#111;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--black);
+}
+
+::-webkit-scrollbar-thumb{
+    background:#555;
+    border-radius:20px;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:var(--black);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform 1s var(--ease);
+}
+
+.loader.done{
+    transform:translateY(-100%);
+}
+
+.loader-number{
+    font-size:clamp(80px,15vw,190px);
+    font-weight:700;
+    letter-spacing:-.1em;
+    line-height:.7;
+}
+
+.loader-text{
+    margin-top:25px;
+    text-align:center;
+    color:var(--gray);
+    font-size:9px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5000;
+    padding:25px 4vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    mix-blend-mode:difference;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:700;
+    letter-spacing:-.07em;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+}
+
+.nav-links a{
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    height:1px;
+    width:0;
+    background:white;
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.menu{
+    display:none;
+    font-size:10px;
+    letter-spacing:.18em;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100svh;
+    padding:145px 4vw 55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.hero-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.status{
+    font-size:10px;
+    color:var(--gray);
+    text-transform:uppercase;
+    letter-spacing:.18em;
+}
+
+.status::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--lime);
+    display:inline-block;
+    margin-right:8px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{opacity:.3;transform:scale(.7)}
+}
+
+.hero-location{
+    color:var(--gray);
+    font-size:10px;
+    text-align:right;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    line-height:1.7;
+}
+
+.hero h1{
+    font-size:clamp(75px,14vw,210px);
+    line-height:.73;
+    letter-spacing:-.11em;
+    font-weight:700;
+}
+
+.hero h1 em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.hero-indent{
+    margin-left:12vw;
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.hero-copy{
+    width:350px;
+    color:var(--gray2);
+    font-size:14px;
+    line-height:1.7;
+}
+
+.scroll{
+    color:var(--gray);
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    border-top:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line-dark);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:24px 0;
+}
+
+.marquee-track{
+    display:inline-flex;
+    animation:marquee 30s linear infinite;
+}
+
+.marquee span{
+    margin-right:65px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    color:var(--gray);
+}
+
+.marquee strong{
+    color:var(--cream);
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section{
+    padding:150px 4vw;
+}
+
+.label{
+    color:var(--gray);
+    font-size:9px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    margin-bottom:60px;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:
+        opacity .9s ease,
+        transform 1s var(--ease);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:8vw;
+}
+
+.about-title{
+    font-size:clamp(55px,8vw,120px);
+    line-height:.8;
+    letter-spacing:-.1em;
+}
+
+.about-title em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.about-big{
+    font-size:clamp(25px,3.5vw,50px);
+    line-height:1.08;
+    letter-spacing:-.05em;
+}
+
+.about-small{
+    max-width:700px;
+    margin-top:40px;
+    color:var(--gray);
+    line-height:1.8;
+    font-size:14px;
+}
+
+.about-info{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    margin-top:70px;
+    border-top:1px solid var(--line-dark);
+}
+
+.info{
+    padding-top:20px;
+}
+
+.info-label{
+    color:var(--gray);
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.info-value{
+    font-size:13px;
+}
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-area{
+    padding-top:10px;
+}
+
+.photo-layout{
+    display:grid;
+    grid-template-columns:1.4fr .6fr;
+    gap:30px;
+    align-items:end;
+}
+
+.photo{
+    position:relative;
+    overflow:hidden;
+    aspect-ratio:16/10;
+    background:#222;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 1s var(--ease);
+}
+
+.photo:hover img{
+    transform:scale(1.045);
+}
+
+.photo-caption{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    right:20px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.tag{
+    background:rgba(10,10,10,.7);
+    backdrop-filter:blur(10px);
+    padding:9px 12px;
+    font-size:8px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.photo-side{
+    font-size:clamp(30px,4vw,65px);
+    line-height:.9;
+    letter-spacing:-.07em;
+}
+
+.photo-side em{
+    font-family:"Playfair Display",serif;
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.light{
+    background:var(--cream);
+    color:var(--black);
+}
+
+.light .label{
+    color:#77736c;
+}
+
+.skills-title{
+    font-size:clamp(65px,10vw,150px);
+    line-height:.76;
+    letter-spacing:-.1em;
+}
+
+.skills-title em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.skills-list{
+    margin-top:110px;
+    border-top:1px solid var(--line-light);
+}
+
+.skill{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 0;
+    border-bottom:1px solid var(--line-light);
+    transition:.4s var(--ease);
+}
+
+.skill:hover{
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.skill-name{
+    font-size:clamp(26px,4vw,58px);
+    letter-spacing:-.06em;
+}
+
+.skill-no{
+    color:#77736c;
+    font-size:9px;
+}
+
+/* =========================================================
+   PROJECT SECTION
+========================================================= */
+
+.projects-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:40px;
+}
+
+.projects-title{
+    font-size:clamp(70px,11vw,165px);
+    line-height:.72;
+    letter-spacing:-.11em;
+}
+
+.projects-title em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.projects-intro{
+    width:300px;
+    color:var(--gray);
+    line-height:1.7;
+    font-size:13px;
+}
+
+/* =========================================================
+   PROJECT CONTROLS
+========================================================= */
+
+.project-controls{
+    margin-top:90px;
+    display:flex;
+    justify-content:space-between;
+    gap:25px;
+    align-items:center;
+    border-bottom:1px solid var(--line-dark);
+    padding-bottom:20px;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.filter{
+    padding:9px 14px;
+    border:1px solid var(--line-dark);
+    border-radius:30px;
+    color:var(--gray);
+    font-size:9px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.filter:hover,
+.filter.active{
+    background:var(--cream);
+    color:var(--black);
+}
+
+.search{
+    width:230px;
+    background:transparent;
+    border:0;
+    border-bottom:1px solid var(--line-dark);
+    outline:none;
+    padding:10px 0;
+    color:var(--cream);
+    font-size:12px;
+}
+
+.search::placeholder{
+    color:var(--gray);
+}
+
+/* =========================================================
+   PROJECT GRID
+========================================================= */
+
+.project-grid{
+    margin-top:65px;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:35px 25px;
+}
+
+.project-card{
+    grid-column:span 4;
+    cursor:pointer;
+    transition:opacity .4s,transform .5s var(--ease);
+}
+
+.project-card:nth-child(3n+2){
+    margin-top:100px;
+}
+
+.project-card:nth-child(5n+1){
+    grid-column:span 5;
+}
+
+.project-card:nth-child(5n+2){
+    grid-column:span 4;
+}
+
+.project-card:nth-child(5n+3){
+    grid-column:span 3;
+}
+
+.project-card.hide{
+    display:none;
+}
+
+.project-image{
+    height:330px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 30% 20%,#d9ff50,#151515 55%);
+}
+
+.project-card:nth-child(2n) .project-image{
+    background:
+        radial-gradient(circle at 70% 30%,#8a6cff,#111 55%);
+}
+
+.project-card:nth-child(3n) .project-image{
+    background:
+        linear-gradient(135deg,#e7e1d5,#555148);
+}
+
+.project-card:nth-child(4n) .project-image{
+    background:
+        radial-gradient(circle at 70% 70%,#ff614f,#171717 60%);
+}
+
+.project-card:nth-child(5n) .project-image{
+    background:
+        radial-gradient(circle at 50% 50%,#43e5ff,#111 60%);
+}
+
+.project-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            transparent,
+            rgba(255,255,255,.08)
+        );
+}
+
+.project-symbol{
+    position:absolute;
+    z-index:2;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:105px;
+    height:105px;
+    border:1px solid rgba(255,255,255,.55);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    color:white;
+    backdrop-filter:blur(7px);
+    transition:
+        transform .7s var(--ease);
+}
+
+.project-card:hover .project-symbol{
+    transform:
+        translate(-50%,-50%)
+        rotate(12deg)
+        scale(1.12);
+}
+
+.project-card:hover .project-image{
+    transform:scale(1.01);
+}
+
+.project-info{
+    padding:17px 0;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line-dark);
+    gap:20px;
+}
+
+.project-name{
+    font-size:16px;
+    letter-spacing:-.03em;
+}
+
+.project-meta{
+    color:var(--gray);
+    font-size:8px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    text-align:right;
+}
+
+.project-description{
+    color:var(--gray);
+    font-size:11px;
+    line-height:1.6;
+    margin-top:10px;
+}
+
+/* =========================================================
+   PROJECT COUNT
+========================================================= */
+
+.project-count{
+    margin-top:35px;
+    color:var(--gray);
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   PROJECT MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(15px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    transition:.5s;
+}
+
+.modal.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-box{
+    background:var(--cream);
+    color:var(--black);
+    width:min(850px,100%);
+    max-height:90vh;
+    overflow:auto;
+    padding:55px;
+    position:relative;
+    transform:translateY(40px);
+    transition:.6s var(--ease);
+}
+
+.modal.open .modal-box{
+    transform:none;
+}
+
+.modal-close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:22px;
+}
+
+.modal-category{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:#77736c;
+}
+
+.modal-title{
+    margin-top:25px;
+    font-size:clamp(40px,6vw,80px);
+    line-height:.85;
+    letter-spacing:-.08em;
+}
+
+.modal-text{
+    margin-top:35px;
+    max-width:650px;
+    font-size:16px;
+    line-height:1.7;
+    color:#555;
+}
+
+.modal-tech{
+    margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tech{
+    border:1px solid var(--line-light);
+    padding:8px 12px;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+}
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.journey{
+    background:var(--cream);
+    color:var(--black);
+}
+
+.journey-grid{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:8vw;
+}
+
+.journey-title{
+    font-size:clamp(60px,8vw,125px);
+    line-height:.78;
+    letter-spacing:-.1em;
+}
+
+.journey-title em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.timeline{
+    border-top:1px solid var(--line-light);
+}
+
+.timeline-row{
+    display:grid;
+    grid-template-columns:80px 1fr 110px;
+    gap:20px;
+    padding:32px 0;
+    border-bottom:1px solid var(--line-light);
+}
+
+.year{
+    color:#77736c;
+    font-size:9px;
+}
+
+.role{
+    font-size:22px;
+    letter-spacing:-.04em;
+}
+
+.type{
+    color:#77736c;
+    text-align:right;
+    font-size:8px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.contact-title{
+    font-size:clamp(70px,12vw,185px);
+    line-height:.72;
+    letter-spacing:-.11em;
+}
+
+.contact-title em{
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+}
+
+.email{
+    display:inline-block;
+    margin-top:80px;
+    font-size:clamp(23px,4vw,55px);
+    letter-spacing:-.06em;
+    border-bottom:2px solid var(--cream);
+    padding-bottom:8px;
+}
+
+.email:hover{
+    opacity:.55;
+}
+
+.footer{
+    padding-top:25px;
+    border-top:1px solid var(--line-dark);
+    display:flex;
+    justify-content:space-between;
+}
+
+.socials{
+    display:flex;
+    gap:30px;
+}
+
+.socials a{
+    font-size:9px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+.socials a:hover{
+    text-decoration:underline;
+}
+
+.copy{
+    color:var(--gray);
+    font-size:9px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .nav{
+        padding:20px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-links{
+        position:fixed;
+        inset:0;
+        background:var(--black);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:30px;
+        transform:translateY(-100%);
+        transition:.7s var(--ease);
+    }
+
+    .nav-links.open{
+        transform:none;
+    }
+
+    .nav-links a{
+        font-size:28px;
+        letter-spacing:-.04em;
+        text-transform:none;
+    }
+
+    .hero{
+        padding:110px 20px 40px;
+    }
+
+    .hero-location{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:19vw;
+    }
+
+    .hero-indent{
+        margin-left:5vw;
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:35px;
+        margin-top:80px;
+    }
+
+    .hero-copy{
+        width:100%;
+        max-width:350px;
+    }
+
+    .section{
+        padding:100px 20px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .about-info{
+        grid-template-columns:repeat(2,1fr);
+        gap:30px;
+    }
+
+    .photo-layout{
+        grid-template-columns:1fr;
+    }
+
+    .photo{
+        aspect-ratio:4/5;
+    }
+
+    .photo-side{
+        max-width:300px;
+    }
+
+    .skills-list{
+        margin-top:70px;
+    }
+
+    .projects-head{
+        display:block;
+    }
+
+    .projects-intro{
+        margin-top:35px;
+        width:auto;
+    }
+
+    .project-controls{
+        display:block;
+    }
+
+    .search{
+        margin-top:25px;
+        width:100%;
+    }
+
+    .project-grid{
+        display:block;
+    }
+
+    .project-card,
+    .project-card:nth-child(3n+2),
+    .project-card:nth-child(5n+1),
+    .project-card:nth-child(5n+2),
+    .project-card:nth-child(5n+3){
+        margin:0 0 65px;
+    }
+
+    .project-image{
+        height:390px;
+    }
+
+    .journey-grid{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .timeline-row{
+        grid-template-columns:60px 1fr;
+    }
+
+    .type{
+        grid-column:2;
+        text-align:left;
+    }
+
+    .modal-box{
+        padding:35px 25px;
+    }
+
+    .email{
+        word-break:break-word;
+    }
+
+    .footer{
+        flex-direction:column;
+        gap:30px;
+    }
+
+    .socials{
+        flex-wrap:wrap;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     LOADER
+======================================================= -->
+
+<div class="loader" id="loader">
+
+    <div>
+
+        <div class="loader-number" id="loaderNumber">
+            0
+        </div>
+
+        <div class="loader-text">
+            Neshik / Digital Portfolio
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<nav class="nav">
+
+    <a href="#home" class="logo">
+        NESHIK®
+    </a>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+    <button class="menu" id="menu">
+        MENU
+    </button>
+
+</nav>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<header class="hero" id="home">
+
+    <div class="hero-top">
+
+        <div class="status">
+            Available for creative projects
+        </div>
+
+        <div class="hero-location">
+            Salem / Tamil Nadu<br>
+            India
+        </div>
+
+    </div>
+
+    <h1 class="reveal">
+
+        DIGITAL
+
+        <br>
+
+        <span class="hero-indent">
+            <em>CREATOR</em>
+        </span>
+
+        <br>
+
+        DEVELOPER
+
+    </h1>
+
+    <div class="hero-bottom">
+
+        <p class="hero-copy">
+            I'm Neshik S S — a BCA student,
+            web developer and UI/UX designer
+            building websites, applications,
+            games and experimental digital
+            experiences.
+        </p>
+
+        <div class="scroll">
+            Scroll ↓
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =======================================================
+     MARQUEE
+======================================================= -->
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+<span><strong>WEB DEVELOPMENT</strong></span>
+<span>UI / UX</span>
+<span>JARVIS AI</span>
+<span>CREATIVE CODING</span>
+<span>GAME DEVELOPMENT</span>
+<span>AI PROJECTS</span>
+<span>DIGITAL EXPERIENCES</span>
+
+<span><strong>WEB DEVELOPMENT</strong></span>
+<span>UI / UX</span>
+<span>JARVIS AI</span>
+<span>CREATIVE CODING</span>
+<span>GAME DEVELOPMENT</span>
+<span>AI PROJECTS</span>
+<span>DIGITAL EXPERIENCES</span>
+
+</div>
+
+</div>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section class="section" id="about">
+
+<div class="label reveal">
+01 — About
+</div>
+
+<div class="about">
+
+    <h2 class="about-title reveal">
+        Ideas into
+        <em>digital</em>
+        reality.
+    </h2>
+
+    <div class="reveal">
+
+        <p class="about-big">
+            I build because I'm curious.
+            I design because details matter.
+            And I code because ideas deserve
+            to become real.
+        </p>
+
+        <p class="about-small">
+            My work covers frontend development,
+            UI/UX design, JavaScript, React,
+            AI experiments, games, dashboards,
+            management systems and creative
+            websites. My portfolio is a collection
+            of everything I'm learning and building.
+        </p>
+
+        <div class="about-info">
+
+            <div class="info">
+                <div class="info-label">Education</div>
+                <div class="info-value">BCA</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Focus</div>
+                <div class="info-value">Web Development</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Design</div>
+                <div class="info-value">UI / UX</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Projects</div>
+                <div class="info-value">60+</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     PHOTO
+======================================================= -->
+
+<section class="section photo-area">
+
+<div class="photo-layout">
+
+    <figure class="photo reveal">
+
+        <img
+            src="neshik-profile.png"
+            alt="Neshik standing outdoors"
+            loading="lazy">
+
+        <div class="photo-caption">
+
+            <span class="tag">
+                Neshik — Personal
+            </span>
+
+            <span class="tag">
+                2026
+            </span>
+
+        </div>
+
+    </figure>
+
+    <div class="photo-side reveal">
+
+        Keep learning.
+        Keep
+
+        <em>building.</em>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     SKILLS
+======================================================= -->
+
+<section class="section light" id="skills">
+
+<div class="label reveal">
+02 — Skills
+</div>
+
+<h2 class="skills-title reveal">
+
+    Tools for
+    <em>ideas.</em>
+
+</h2>
+
+<div class="skills-list">
+
+<div class="skill reveal">
+    <span class="skill-name">HTML / CSS</span>
+    <span class="skill-no">01</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">JavaScript</span>
+    <span class="skill-no">02</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">React</span>
+    <span class="skill-no">03</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">UI / UX Design</span>
+    <span class="skill-no">04</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">Responsive Web</span>
+    <span class="skill-no">05</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">AI Experiments</span>
+    <span class="skill-no">06</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">Creative Coding</span>
+    <span class="skill-no">07</span>
+</div>
+
+<div class="skill reveal">
+    <span class="skill-name">Git / GitHub</span>
+    <span class="skill-no">08</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
+
+<section class="section" id="projects">
+
+<div class="label reveal">
+03 — 60+ Projects
+</div>
+
+<div class="projects-head">
+
+    <h2 class="projects-title reveal">
+        My
+        <em>work.</em>
+    </h2>
+
+    <p class="projects-intro reveal">
+        A growing archive of websites,
+        applications, games, AI experiments,
+        dashboards and creative builds.
+    </p>
+
+</div>
+
+
+<!-- PROJECT CONTROLS -->
+
+<div class="project-controls reveal">
+
+    <div class="filters">
+
+        <button class="filter active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter" data-filter="web">
+            Web
+        </button>
+
+        <button class="filter" data-filter="ai">
+            AI
+        </button>
+
+        <button class="filter" data-filter="game">
+            Games
+        </button>
+
+        <button class="filter" data-filter="app">
+            Apps
+        </button>
+
+        <button class="filter" data-filter="dashboard">
+            Dashboards
+        </button>
+
+    </div>
+
+    <input
+        class="search"
+        id="search"
+        type="search"
+        placeholder="Search projects...">
+
+</div>
+
+
+<div
+    class="project-count"
+    id="projectCount">
+    Showing 64 projects
+</div>
+
+
+<!-- PROJECT GRID -->
+
+<div
+    class="project-grid"
+    id="projectGrid">
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     JOURNEY
+======================================================= -->
+
+<section class="section journey" id="journey">
+
+<div class="label reveal">
+04 — Journey
+</div>
+
+<div class="journey-grid">
+
+    <h2 class="journey-title reveal">
+
+        Learn.
+        <em>Build.</em>
+        Repeat.
+
+    </h2>
+
+    <div class="timeline">
+
+        <div class="timeline-row reveal">
+
+            <span class="year">NOW</span>
+
+            <span class="role">
+                BCA Student
+            </span>
+
+            <span class="type">
+                Education
+            </span>
+
+        </div>
+
+        <div class="timeline-row reveal">
+
+            <span class="year">2026</span>
+
+            <span class="role">
+                Web Development
+            </span>
+
+            <span class="type">
+                Learning
+            </span>
+
+        </div>
+
+        <div class="timeline-row reveal">
+
+            <span class="year">2026</span>
+
+            <span class="role">
+                UI / UX Design
+            </span>
+
+            <span class="type">
+                Exploring
+            </span>
+
+        </div>
+
+        <div class="timeline-row reveal">
+
+            <span class="year">2026</span>
+
+            <span class="role">
+                AI & Creative Coding
+            </span>
+
+            <span class="type">
+                Building
+            </span>
+
+        </div>
+
+        <div class="timeline-row reveal">
+
+            <span class="year">FUTURE</span>
+
+            <span class="role">
+                Creative Developer
+            </span>
+
+            <span class="type">
+                Goal
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section class="section contact" id="contact">
+
+<div>
+
+    <div class="label reveal">
+        05 — Contact
+    </div>
+
+    <h2 class="contact-title reveal">
+
+        Let's create
+        <br>
+        <em>something.</em>
+
+    </h2>
+
+    <!-- CHANGE EMAIL -->
+
+    <a
+        class="email reveal"
+        href="mailto:yourmail@example.com">
+
+        yourmail@example.com ↗
+
+    </a>
+
+</div>
+
+
+<footer class="footer">
+
+<div class="socials">
+
+    <a
+        href="https://www.linkedin.com/in/neshik-s-s-3804a3387/"
+        target="_blank"
+        rel="noopener">
+        LinkedIn ↗
+    </a>
+
+    <a
+        href="#"
+        target="_blank"
+        rel="noopener">
+        GitHub ↗
+    </a>
+
+    <a
+        href="#"
+        target="_blank"
+        rel="noopener">
+        Instagram ↗
+    </a>
+
+</div>
+
+<div class="copy">
+    © <span id="year"></span> Neshik S S
+</div>
+
+</footer>
+
+</section>
+
+
+<!-- =======================================================
+     PROJECT MODAL
+======================================================= -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button
+    class="modal-close"
+    id="modalClose">
+    ×
+</button>
+
+<div
+    class="modal-category"
+    id="modalCategory">
+</div>
+
+<h2
+    class="modal-title"
+    id="modalTitle">
+</h2>
+
+<p
+    class="modal-text"
+    id="modalText">
+</p>
+
+<div
+    class="modal-tech"
+    id="modalTech">
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   PROJECT DATABASE — 64 PROJECTS
+========================================================= */
+
+const projects = [
+
+/* ---------------------------------------------------------
+   AI
+--------------------------------------------------------- */
+
+{
+ title:"JARVIS AI",
+ category:"ai",
+ type:"AI / Assistant",
+ icon:"✦",
+ description:"A futuristic personal AI assistant interface inspired by intelligent desktop assistants, with voice interaction, commands and productivity features.",
+ tech:["HTML","CSS","JavaScript","AI"]
+},
+
+{
+ title:"AI Resume Builder",
+ category:"ai",
+ type:"AI / Career",
+ icon:"✎",
+ description:"An AI-powered resume creation concept designed to help users build professional resumes quickly.",
+ tech:["HTML","CSS","JavaScript","AI"]
+},
+
+{
+ title:"Password Generator AI",
+ category:"ai",
+ type:"AI / Security",
+ icon:"◆",
+ description:"A smart password generation interface focused on creating strong and customizable passwords.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"CSS Design AI",
+ category:"ai",
+ type:"AI / Design",
+ icon:"◇",
+ description:"A creative concept for generating CSS design ideas and UI styling through an AI-inspired interface.",
+ tech:["HTML","CSS","JavaScript","AI"]
+},
+
+{
+ title:"Movie Suggestion AI",
+ category:"ai",
+ type:"AI / Entertainment",
+ icon:"▶",
+ description:"A movie recommendation platform concept supporting movies from different languages and regions.",
+ tech:["HTML","CSS","JavaScript","AI"]
+},
+
+{
+ title:"AI Powered App",
+ category:"ai",
+ type:"AI / Application",
+ icon:"⚡",
+ description:"An experimental AI application interface exploring practical AI-powered user interactions.",
+ tech:["HTML","CSS","JavaScript","AI"]
+},
+
+{
+ title:"Space Information AI",
+ category:"ai",
+ type:"AI / Space",
+ icon:"✦",
+ description:"A futuristic educational space information experience combining astronomy content with an AI-inspired interface.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Developer AI Assistant",
+ category:"ai",
+ type:"AI / Developer",
+ icon:"</>",
+ description:"A developer-focused assistant concept for productivity, coding ideas and project exploration.",
+ tech:["JavaScript","AI","UI/UX"]
+},
+
+/* ---------------------------------------------------------
+   WEB
+--------------------------------------------------------- */
+
+{
+ title:"Quantum Crew",
+ category:"web",
+ type:"Product / Website",
+ icon:"☀",
+ description:"A futuristic product website for a solar-powered mobile charging case under the Quantum Crew concept.",
+ tech:["HTML","CSS","JavaScript","UI/UX"]
+},
+
+{
+ title:"Neutrino",
+ category:"web",
+ type:"Digital Platform",
+ icon:"✦",
+ description:"A futuristic digital brand and project ecosystem exploring technology, entertainment and creative web experiences.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"The Gamer's Café",
+ category:"web",
+ type:"Gaming Website",
+ icon:"◉",
+ description:"A luxury gaming café website with immersive visuals, premium cards and interactive sections.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Personal Portfolio",
+ category:"web",
+ type:"Portfolio",
+ icon:"N",
+ description:"Personal portfolio experience showcasing development, design, projects and creative work.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Aesthetic Developer Website",
+ category:"web",
+ type:"Creative Website",
+ icon:"✦",
+ description:"An editorial-style developer website focused on typography, motion and visual storytelling.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Tamil Nadu Temple Explorer",
+ category:"web",
+ type:"Culture / Travel",
+ icon:"⌂",
+ description:"A temple discovery platform concept featuring Tamil Nadu temples, history and cultural information.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Cricket History Time Travel",
+ category:"web",
+ type:"Sports / Education",
+ icon:"◉",
+ description:"A timeline experience taking users through cricket history across different eras.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"India 90s → 2000s Time Travel",
+ category:"web",
+ type:"Culture / Nostalgia",
+ icon:"90",
+ description:"A nostalgic interactive time-travel website exploring Indian life and culture from the 1990s to the 2000s.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"TV Mechanical Shop",
+ category:"web",
+ type:"Business Website",
+ icon:"▣",
+ description:"A service-oriented website concept for a television and mechanical repair business.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Restaurant Website",
+ category:"web",
+ type:"Food / Business",
+ icon:"✦",
+ description:"A responsive restaurant experience featuring menu presentation and modern visual design.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Food Delivery Website",
+ category:"web",
+ type:"Food / Platform",
+ icon:"↗",
+ description:"A food ordering interface concept with restaurant discovery, food categories and checkout flow.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Booking System",
+ category:"web",
+ type:"Booking Platform",
+ icon:"□",
+ description:"A responsive booking platform concept designed around selection, scheduling and confirmation.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Library Management Website",
+ category:"web",
+ type:"Education",
+ icon:"▤",
+ description:"A library management interface for organizing books, students and library activities.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Student Management System",
+ category:"web",
+ type:"Education",
+ icon:"◎",
+ description:"A student administration interface for organizing student information and academic records.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Hospital Management App",
+ category:"app",
+ type:"Healthcare Management",
+ icon:"+",
+ description:"A hospital administration concept covering patient, doctor and management workflows.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Hotel Management App",
+ category:"app",
+ type:"Hospitality",
+ icon:"⌂",
+ description:"A hotel management interface concept for rooms, guests, bookings and administration.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+/* ---------------------------------------------------------
+   SPORTS
+--------------------------------------------------------- */
+
+{
+ title:"MS Dhoni Fan Website",
+ category:"web",
+ type:"Cricket / Fan Website",
+ icon:"15",
+ description:"A dedicated MS Dhoni fan website with Home, About, Career, Achievements, Gallery, Contact and About Creator sections.",
+ tech:["HTML5","CSS3","JavaScript","Responsive UI"]
+},
+
+{
+ title:"CSK Fans Website",
+ category:"web",
+ type:"Cricket / Fan Platform",
+ icon:"CSK",
+ description:"A Chennai Super Kings fan experience designed for supporters, cricket content and team enthusiasm.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Cricket Analytics Platform",
+ category:"dashboard",
+ type:"Sports Analytics",
+ icon:"◉",
+ description:"A cricket statistics and analytics dashboard concept for exploring player and match data.",
+ tech:["JavaScript","Charts","UI/UX"]
+},
+
+{
+ title:"Cricket Game",
+ category:"game",
+ type:"Sports Game",
+ icon:"🏏",
+ description:"A browser cricket game concept featuring interactive gameplay and score mechanics.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Real-Time Sports Analytics",
+ category:"dashboard",
+ type:"Sports Technology",
+ icon:"↗",
+ description:"An experimental sports analytics interface designed for real-time performance information.",
+ tech:["JavaScript","Analytics","UI"]
+},
+
+/* ---------------------------------------------------------
+   GAMES
+--------------------------------------------------------- */
+
+{
+ title:"Iron Man Game",
+ category:"game",
+ type:"Action Game",
+ icon:"⚡",
+ description:"A browser-based Iron Man inspired action game concept with futuristic visuals and interactive gameplay.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Panda Relax Game",
+ category:"game",
+ type:"Casual Game",
+ icon:"🐼",
+ description:"A relaxing panda-themed browser game featuring a friendly panda family and playful environment.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Stone Paper Scissors",
+ category:"game",
+ type:"Classic Game",
+ icon:"✋",
+ description:"A polished browser version of the classic stone, paper and scissors game.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Car Racing Game",
+ category:"game",
+ type:"Racing Game",
+ icon:"▰",
+ description:"A browser racing game experiment featuring vehicle movement and interactive gameplay.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Subway Runner",
+ category:"game",
+ type:"Endless Runner",
+ icon:"→",
+ description:"An endless-runner style browser game concept inspired by fast-paced mobile games.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Ayyappan Game",
+ category:"game",
+ type:"Cultural Game",
+ icon:"✦",
+ description:"A cultural game concept exploring interactive storytelling and visual design.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Space Explorer Game",
+ category:"game",
+ type:"Space Game",
+ icon:"✦",
+ description:"An educational space-themed interactive game concept for exploring planets and stars.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Cricket Challenge",
+ category:"game",
+ type:"Sports Game",
+ icon:"🏏",
+ description:"A mini cricket challenge concept focused on timing and interactive gameplay.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+/* ---------------------------------------------------------
+   APPS
+--------------------------------------------------------- */
+
+{
+ title:"Weather App",
+ category:"app",
+ type:"Utility",
+ icon:"☁",
+ description:"A responsive weather application interface for displaying current weather and forecasts.",
+ tech:["JavaScript","API","CSS"]
+},
+
+{
+ title:"Calculator App",
+ category:"app",
+ type:"Utility",
+ icon:"÷",
+ description:"A modern calculator interface with responsive controls and clean interaction.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Budget Tracker",
+ category:"app",
+ type:"Finance",
+ icon:"₹",
+ description:"A personal budget tracking concept for monitoring income, expenses and financial activity.",
+ tech:["JavaScript","LocalStorage","UI"]
+},
+
+{
+ title:"QR Code Reader",
+ category:"app",
+ type:"Utility",
+ icon:"▦",
+ description:"A browser utility concept for scanning and working with QR codes.",
+ tech:["JavaScript","Web APIs"]
+},
+
+{
+ title:"To Do App",
+ category:"app",
+ type:"Productivity",
+ icon:"✓",
+ description:"A simple productivity application for creating, completing and managing tasks.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Font Finder App",
+ category:"app",
+ type:"Design Utility",
+ icon:"A",
+ description:"A font exploration tool concept for discovering and comparing typography.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Notes App",
+ category:"app",
+ type:"Productivity",
+ icon:"✎",
+ description:"A lightweight browser notes application concept for quickly storing ideas.",
+ tech:["JavaScript","LocalStorage"]
+},
+
+{
+ title:"Digital Clock",
+ category:"app",
+ type:"Utility",
+ icon:"12",
+ description:"A minimal digital clock interface with live time updates.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Password Manager UI",
+ category:"app",
+ type:"Security",
+ icon:"◆",
+ description:"A security-focused interface concept for organizing saved credentials.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Expense Calculator",
+ category:"app",
+ type:"Finance",
+ icon:"₹",
+ description:"A compact expense calculation tool designed for everyday financial tracking.",
+ tech:["JavaScript","UI"]
+},
+
+/* ---------------------------------------------------------
+   DASHBOARDS
+--------------------------------------------------------- */
+
+{
+ title:"SaaS Analytics Dashboard",
+ category:"dashboard",
+ type:"Business Analytics",
+ icon:"↗",
+ description:"A futuristic SaaS dashboard concept with charts, metrics, tables and data visualization.",
+ tech:["React","Charts","UI/UX"]
+},
+
+{
+ title:"Admin Dashboard",
+ category:"dashboard",
+ type:"Administration",
+ icon:"▦",
+ description:"A responsive administrative dashboard concept with cards, navigation and data modules.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Developer Productivity Dashboard",
+ category:"dashboard",
+ type:"Developer Tools",
+ icon:"</>",
+ description:"A productivity analytics platform concept for understanding developer workflows and activity.",
+ tech:["React","Analytics","UI"]
+},
+
+{
+ title:"Fleet Tracking Dashboard",
+ category:"dashboard",
+ type:"Logistics",
+ icon:"⌁",
+ description:"A fleet tracking interface concept with vehicle monitoring and geofencing ideas.",
+ tech:["JavaScript","Maps","Dashboard"]
+},
+
+{
+ title:"Real-Time Analytics Dashboard",
+ category:"dashboard",
+ type:"Data Visualization",
+ icon:"◒",
+ description:"A live analytics interface concept focused on metrics and visual data exploration.",
+ tech:["JavaScript","Charts","UI"]
+},
+
+{
+ title:"Student Analytics Dashboard",
+ category:"dashboard",
+ type:"Education",
+ icon:"◎",
+ description:"An educational analytics dashboard for student performance and academic information.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Hospital Admin Dashboard",
+ category:"dashboard",
+ type:"Healthcare",
+ icon:"+",
+ description:"A healthcare administration dashboard concept for managing hospital information.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Hotel Admin Dashboard",
+ category:"dashboard",
+ type:"Hospitality",
+ icon:"⌂",
+ description:"A hotel operations dashboard concept for room and booking management.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+/* ---------------------------------------------------------
+   MORE CREATIVE PROJECTS
+--------------------------------------------------------- */
+
+{
+ title:"Space Information App",
+ category:"app",
+ type:"Education / Space",
+ icon:"✦",
+ description:"An interactive educational platform about planets, stars, galaxies and space exploration.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Star Information Explorer",
+ category:"web",
+ type:"Astronomy",
+ icon:"★",
+ description:"A visual astronomy experience focused on discovering stars and learning interesting facts.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Project Showcase",
+ category:"web",
+ type:"Portfolio Platform",
+ icon:"◈",
+ description:"A project gallery concept for developers and creators to present their work.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Social Media App",
+ category:"app",
+ type:"Social Platform",
+ icon:"◎",
+ description:"A full-stack social media platform concept featuring profiles, posts and social interaction.",
+ tech:["React","JavaScript","API"]
+},
+
+{
+ title:"Full Stack Social Platform",
+ category:"web",
+ type:"Full Stack",
+ icon:"↗",
+ description:"A broader social platform experiment exploring frontend and backend application architecture.",
+ tech:["React","Node.js","Database"]
+},
+
+{
+ title:"Luxury Gaming Experience",
+ category:"web",
+ type:"Gaming / Luxury",
+ icon:"✦",
+ description:"A premium gaming experience website built around immersive visual storytelling.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Indian Culture Explorer",
+ category:"web",
+ type:"Culture",
+ icon:"⌂",
+ description:"A digital exploration concept for discovering Indian culture, places and stories.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Nostalgia India",
+ category:"web",
+ type:"Nostalgia",
+ icon:"90",
+ description:"A visual nostalgia project exploring memories and technology from older generations.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Creative Developer Lab",
+ category:"web",
+ type:"Creative Coding",
+ icon:"✦",
+ description:"An experimental playground for testing futuristic interfaces and creative coding ideas.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Interactive 3D Portfolio",
+ category:"web",
+ type:"3D / Portfolio",
+ icon:"◇",
+ description:"An experimental portfolio environment exploring 3D-inspired navigation and interactions.",
+ tech:["JavaScript","3D","UI/UX"]
+},
+
+{
+ title:"Real-Time Fleet Tracker",
+ category:"dashboard",
+ type:"Logistics",
+ icon:"⌁",
+ description:"A fleet monitoring concept with location tracking, vehicle states and geofencing ideas.",
+ tech:["JavaScript","Maps","Analytics"]
+},
+
+{
+ title:"Custom Search Engine",
+ category:"app",
+ type:"Search Technology",
+ icon:"⌕",
+ description:"A full-text search engine concept focused on fast content discovery.",
+ tech:["JavaScript","Search","UI"]
+},
+
+{
+ title:"Library Digital Portal",
+ category:"web",
+ type:"Education",
+ icon:"▤",
+ description:"A modern digital library portal concept for discovering books and resources.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Developer Portfolio Generator",
+ category:"app",
+ type:"Developer Tool",
+ icon:"</>",
+ description:"A concept for helping developers create personal portfolio pages from structured information.",
+ tech:["JavaScript","UI"]
+},
+
+{
+ title:"Digital Product Showcase",
+ category:"web",
+ type:"Product Design",
+ icon:"◆",
+ description:"A high-end product presentation experience focused on product storytelling.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Interactive Resume",
+ category:"web",
+ type:"Career",
+ icon:"✎",
+ description:"An interactive resume concept transforming traditional career information into a digital experience.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"AI Movie Explorer",
+ category:"ai",
+ type:"AI / Movies",
+ icon:"▶",
+ description:"A movie discovery concept combining recommendation logic with an AI-inspired interface.",
+ tech:["JavaScript","API","AI"]
+},
+
+{
+ title:"Cricket Player Explorer",
+ category:"web",
+ type:"Sports",
+ icon:"15",
+ description:"A cricket player discovery interface focused on careers, statistics and achievements.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Digital Museum",
+ category:"web",
+ type:"Culture / Education",
+ icon:"▣",
+ description:"A digital museum concept presenting collections and stories through an interactive interface.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Future Tech Landing Page",
+ category:"web",
+ type:"Technology",
+ icon:"⚡",
+ description:"A futuristic landing page concept exploring bold typography, motion and technology branding.",
+ tech:["HTML","CSS","JavaScript"]
+},
+
+{
+ title:"Neon Dashboard",
+ category:"dashboard",
+ type:"UI Experiment",
+ icon:"◈",
+ description:"A neon-inspired dashboard experiment with futuristic cards and information hierarchy.",
+ tech:["HTML","CSS","JavaScript"]
+}
+
+];
+
+
+/* =========================================================
+   NOTE
+   The database above contains the portfolio archive.
+========================================================= */
+
+
+/* =========================================================
+   RENDER PROJECTS
+========================================================= */
+
+const grid =
+    document.getElementById("projectGrid");
+
+const count =
+    document.getElementById("projectCount");
+
+
+function renderProjects(list){
+
+    grid.innerHTML = "";
+
+    list.forEach((project,index)=>{
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "project-card reveal";
+
+        card.dataset.category =
+            project.category;
+
+        card.innerHTML = `
+
+            <div class="project-image">
+
+                <div class="project-symbol">
+                    ${project.icon}
+                </div>
+
+            </div>
+
+            <div class="project-info">
+
+                <span class="project-name">
+                    ${project.title}
+                </span>
+
+                <span class="project-meta">
+                    ${project.type}
+                </span>
+
+            </div>
+
+            <p class="project-description">
+                ${project.description}
+            </p>
+
+        `;
+
+        card.addEventListener(
+            "click",
+            ()=>{
+                openModal(project);
+            }
+        );
+
+        grid.appendChild(card);
+
+    });
+
+    count.textContent =
+        `Showing ${list.length} projects`;
+
+    observeReveal();
+
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+const filters =
+    document.querySelectorAll(".filter");
+
+let currentFilter = "all";
+
+
+filters.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        filters.forEach(b =>
+            b.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        currentFilter =
+            button.dataset.filter;
+
+        filterProjects();
+
+    });
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const search =
+    document.getElementById("search");
+
+
+search.addEventListener(
+    "input",
+    filterProjects
+);
+
+
+function filterProjects(){
+
+    const query =
+        search.value
+            .trim()
+            .toLowerCase();
+
+    const filtered =
+        projects.filter(project=>{
+
+            const matchesCategory =
+                currentFilter === "all" ||
+                project.category === currentFilter;
+
+            const searchable =
+                (
+                    project.title +
+                    " " +
+                    project.type +
+                    " " +
+                    project.description +
+                    " " +
+                    project.tech.join(" ")
+                ).toLowerCase();
+
+            const matchesSearch =
+                searchable.includes(query);
+
+            return matchesCategory &&
+                   matchesSearch;
+
+        });
+
+    renderProjects(filtered);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalCategory =
+    document.getElementById("modalCategory");
+
+const modalText =
+    document.getElementById("modalText");
+
+const modalTech =
+    document.getElementById("modalTech");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+
+function openModal(project){
+
+    modalTitle.textContent =
+        project.title;
+
+    modalCategory.textContent =
+        `${project.type} / ${project.category}`;
+
+    modalText.textContent =
+        project.description;
+
+    modalTech.innerHTML =
+        project.tech
+        .map(item =>
+            `<span class="tech">${item}</span>`
+        )
+        .join("");
+
+    modal.classList.add("open");
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+}
+
+
+function closeModal(){
+
+    modal.classList.remove("open");
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+}
+
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+modal.addEventListener(
+    "click",
+    event=>{
+
+        if(
+            event.target === modal
+        ){
+            closeModal();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key === "Escape"){
+            closeModal();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menu =
+    document.getElementById("menu");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menu.addEventListener(
+    "click",
+    ()=>{
+
+        const opened =
+            navLinks.classList.toggle(
+                "open"
+            );
+
+        document.body.classList.toggle(
+            "menu-open",
+            opened
+        );
+
+        menu.textContent =
+            opened ? "CLOSE" : "MENU";
+
+    }
+);
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener(
+        "click",
+        ()=>{
+
+            navLinks.classList.remove(
+                "open"
+            );
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+            menu.textContent =
+                "MENU";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+let observer;
+
+
+function observeReveal(){
+
+    if(observer){
+        observer.disconnect();
+    }
+
+    observer =
+        new IntersectionObserver(
+            entries=>{
+
+                entries.forEach(entry=>{
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.08
+            }
+        );
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(element=>{
+            observer.observe(element);
+        });
+
+}
+
+
+observeReveal();
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+const loader =
+    document.getElementById("loader");
+
+const loaderNumber =
+    document.getElementById("loaderNumber");
+
+let number = 0;
+
+
+const loaderInterval =
+    setInterval(()=>{
+
+        number +=
+            Math.floor(
+                Math.random()*10
+            ) + 1;
+
+        if(number >= 100){
+
+            number = 100;
+
+            clearInterval(
+                loaderInterval
+            );
+
+            setTimeout(()=>{
+
+                loader.classList.add(
+                    "done"
+                );
+
+                observeReveal();
+
+            },400);
+
+        }
+
+        loaderNumber.textContent =
+            number;
+
+    },35);
+
+
+/* =========================================================
+   INITIAL PROJECT RENDER
+========================================================= */
+
+renderProjects(projects);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(
+            event.target.tagName === "INPUT"
+        ){
+            return;
+        }
+
+        if(event.key.toLowerCase()==="p"){
+            location.hash="projects";
+        }
+
+        if(event.key.toLowerCase()==="a"){
+            location.hash="about";
+        }
+
+        if(event.key.toLowerCase()==="c"){
+            location.hash="contact";
+        }
+
+        if(event.key.toLowerCase()==="h"){
+            location.hash="home";
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
